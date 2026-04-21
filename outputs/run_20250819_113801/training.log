@@ -1,0 +1,2 @@
+2025-08-19 11:38:01,367 INFO: Starting training with args: Namespace(batch_size=2, best_metric='iou', data_path='/home/peipengfei/gy/crack_seg_ocr/dataset/crack500', device='cuda', learning_rate=0.0005, num_epochs=50, num_workers=2, ocr_key_channels=256, ocr_mid_channels=512, output_dir='/home/peipengfei/gy/crack_seg_ocr/outputs', save_interval=5, use_fusion=True, use_loggabor=False, use_wavelet=False, visualize_interval=1)
+2025-08-19 11:38:02,105 INFO: 使用融合分支增强模型
