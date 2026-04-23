@@ -15,34 +15,36 @@ data = np.array([
 ]) * 100  # Convert to percentage (核心：小数→百分比)
 
 # 2. Figure configuration
-fig, ax = plt.subplots(figsize=(12, 8))
-bar_width = 0.18  # Suitable for 4 branches per metric
-x = np.arange(len(metrics))  # X-axis positions (one per metric)
-# Professional color palette (consistent with branch order)
+fig, ax = plt.subplots(figsize=(18, 12))
+bar_width = 0.18
+x = np.arange(len(metrics))
 colors = ['#6A994E', '#2E86AB', '#A23B72', '#F18F01']
 
-# 3. Plot: Each branch → color; each metric → 4 bars
+# 3. Plot bars
 for i, (branch, color) in enumerate(zip(branches, colors)):
     bars = ax.bar(x + i * bar_width, data[i, :], width=bar_width, label=branch, color=color, alpha=0.8)
     
 # 4. Figure beautification
-ax.set_xlabel('Metrics', fontsize=12, fontweight='bold')
-ax.set_ylabel('Metric Value (%)', fontsize=12, fontweight='bold')  # Y-label updated to %
+# 坐标轴标题：再次放大 + 增加间距，不贴轴
+ax.set_xlabel('Metrics', fontsize=28, fontweight='bold', labelpad=20)
+ax.set_ylabel('Metric Value (%)', fontsize=28, fontweight='bold', labelpad=20)
 
-# X-axis ticks (center-aligned for 4 bars per metric)
+# X轴刻度：居中 + 超大字体
 ax.set_xticks(x + bar_width * 1.5)
-ax.set_xticklabels(metrics, ha='center', fontsize=10)
+ax.set_xticklabels(metrics, ha='center', fontsize=24)
 
-# Y-axis range (adapted to percentage: 55% → 102% to highlight differences)
+# Y轴范围
 ax.set_ylim(0, 102)
 
-# Add horizontal grid lines (enhance readability)
+# Y轴刻度：超大字体 + 间距
+ax.tick_params(axis='y', labelsize=24, pad=10)
+
+# 网格线
 ax.grid(axis='y', alpha=0.3, linestyle='--')
 
-# Legend (matches updated branch order)
-ax.legend(loc='upper right', fontsize=10, framealpha=0.9)
+# 图例：超大字体
+ax.legend(loc='upper right', fontsize=24, framealpha=0.9)
 
-# Adjust layout to avoid label cutoff
 plt.tight_layout()
 
 # 5. Save and display
